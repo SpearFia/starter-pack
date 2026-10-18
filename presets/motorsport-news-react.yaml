@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://spearfia.dev/schemas/vision/v1.json
+name: motorsport-news-react
+goal: Explain what happened in the race and why it matters, with a clear opinion.
+pacing:
+  avg_shot_seconds: 3.0
+  max_silence_seconds: 0.5
+  cut_style: mixed
+script_rules:
+  - Lead with the headline, then the clip, then the take.
+  - Name drivers and teams on screen the first time they appear.
+  - Cite the source for every claim.
+weights:
+  lower-third: 0.8
+  facecam-pip: 0.7
+  replay-loupe: 0.6
+  meme: -0.3
+avoid:
+  - unlicensed broadcast footage longer than needed for commentary
