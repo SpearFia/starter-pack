@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://spearfia.dev/schemas/vision/v1.json
+name: chaotic-gaming-comedy
+goal: Keep the viewer laughing and never let attention drop.
+pacing:
+  avg_shot_seconds: 1.5
+  max_silence_seconds: 0.25
+  cut_style: jump
+script_rules:
+  - Cut the setup to the bone; land the punchline on a cut.
+  - Every fail gets a reaction beat.
+weights:
+  record-scratch: 0.8
+  zoom-punch: 0.9
+  bass-boost: 0.6
+  slow-push: -0.5
+avoid:
+  - dead air
+  - explaining the joke

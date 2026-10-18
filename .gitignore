@@ -1,0 +1,15 @@
+node_modules/
+.spec/
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+
+# Media isn't committed yet. When assets are added, they'll go through Git LFS.
+*.mp4
+*.mov
+*.mkv
+*.wav
+*.mp3
+*.flac
+*.drp

@@ -1,0 +1,33 @@
+name: ci
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: spearfia/spearfia-spec
+          path: .spec
+      - uses: pnpm/action-setup@v4
+        with:
+          package_json_file: .spec/package.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: pnpm install --frozen-lockfile --dir .spec
+      - name: Validate presets and descriptors against spearfia-spec
+        run: |
+          shopt -s nullglob globstar
+          node .spec/scripts/check.mjs vision presets/*.yaml
+          descriptors=(**/*.asset.json)
+          if [ ${#descriptors[@]} -gt 0 ]; then node .spec/scripts/check.mjs asset "${descriptors[@]}"; fi
+      - uses: DavidAnson/markdownlint-cli2-action@v19
+        with:
+          globs: |
+            **/*.md
+            #.spec
+            #**/node_modules

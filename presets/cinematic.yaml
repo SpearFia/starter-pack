@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://spearfia.dev/schemas/vision/v1.json
+name: cinematic
+goal: Make the viewer feel the moment before they understand it.
+pacing:
+  avg_shot_seconds: 4.5
+  max_silence_seconds: 2.0
+  cut_style: invisible
+script_rules:
+  - Let images carry the story; cut lines the footage already says.
+  - Leave room for music to breathe between sections.
+weights:
+  slow-push: 0.8
+  film-grain: 0.5
+  whip-pan: -0.6
+  meme: -1
+avoid:
+  - jump cuts inside a sentence
+  - on-screen captions over wide shots
